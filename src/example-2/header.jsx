@@ -12,7 +12,7 @@ export default function Header() {
             alt="Flowbite Logo"
           />
           <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">
-            Flowbite
+            Cybersoft
           </span>
         </a>
         <button
