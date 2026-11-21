@@ -5,112 +5,80 @@ export default function Phone(props) {
     return new Intl.NumberFormat("vi-VN").format(price);
   };
 
-  const getRarityBadge = (rarity) => {
-    switch (rarity) {
-      case "MYTHIC CROWN":
-        return (
-          <span className="px-2.5 py-0.5 text-[11px] font-cinzel uppercase tracking-[1px] rounded-[2px] bg-[#581C87]/40 text-[#D8B4FE] border border-[#A855F7]/40">
-            ✦ {rarity}
-          </span>
-        );
-      case "LEGENDARY":
-        return (
-          <span className="px-2.5 py-0.5 text-[11px] font-cinzel uppercase tracking-[1px] rounded-[2px] bg-[#CA8A04]/20 text-[#FACC15] border border-[#CA8A04]/40">
-            ★ {rarity}
-          </span>
-        );
-      default:
-        return (
-          <span className="px-2.5 py-0.5 text-[11px] font-cinzel uppercase tracking-[1px] rounded-[2px] bg-[#2C1A10] text-[#BFA98A] border border-[#5C3D2E]">
-            ◆ {rarity || "RARE RELIC"}
-          </span>
-        );
-    }
-  };
-
   return (
     <div
-      className={`group relative flex flex-col justify-between rounded-[4px] border transition-all duration-300 ${
+      className={`group relative flex flex-col justify-between rounded-2xl p-6 transition-all duration-300 ${
         isSelected
-          ? "bg-[#3D2517] border-[#CA8A04] quest-glow-active"
-          : "bg-[#2C1A10] border-[#5C3D2E] hover:bg-[#3D2517] hover:border-[#CA8A04]/50 quest-glow-sm hover:quest-glow-md"
+          ? "bg-[#241A14] border border-amber-500/40 shadow-xl shadow-amber-500/10 -translate-y-1"
+          : "bg-[#18110D]/90 border border-white/5 hover:border-amber-500/20 hover:bg-[#201611] hover:shadow-2xl hover:shadow-amber-500/5 hover:-translate-y-1.5"
       }`}
     >
-      {/* 2px Gold top border accent as per QuestUI card spec */}
-      <div
-        className={`h-[2px] w-full transition-colors ${
-          isSelected ? "bg-[#CA8A04]" : "bg-[#CA8A04]/70 group-hover:bg-[#CA8A04]"
-        }`}
-      />
+      {/* Brand & Badge Tag */}
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-xs font-semibold uppercase tracking-wider text-amber-500/90 bg-amber-500/10 px-2.5 py-1 rounded-full">
+          {phone.brand || "SmartPhone"}
+        </span>
+        <span className="text-xs text-slate-400">
+          {phone.badge || "Chính Hãng"}
+        </span>
+      </div>
 
-      <div className="p-5 flex flex-col h-full">
-        {/* Rarity & Tier Row */}
-        <div className="flex items-center justify-between mb-4">
-          {getRarityBadge(phone.rarity)}
-          <span className="text-[12px] font-spectral text-[#BFA98A] italic">
-            {phone.tier || "Artifact"}
+      {/* Spacious Product Image Display (No harsh boxes, large & clear) */}
+      <div className="relative my-4 flex h-60 w-full items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-radial from-amber-500/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <img
+          src={phone.hinhAnh}
+          alt={phone.tenSP}
+          className="max-h-56 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105 drop-shadow-[0_15px_25px_rgba(0,0,0,0.6)]"
+        />
+      </div>
+
+      {/* Product Information */}
+      <div className="mt-2 flex-1">
+        <h3 className="text-xl font-bold text-slate-100 transition-colors group-hover:text-amber-400">
+          {phone.tenSP}
+        </h3>
+        <p className="mt-1 text-sm text-slate-400 line-clamp-1">
+          {phone.manHinh}
+        </p>
+
+        {/* Clean Tech Specs */}
+        <div className="mt-3 flex items-center gap-2 text-xs text-slate-300">
+          <span className="bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
+            RAM {phone.ram}
+          </span>
+          <span className="bg-white/5 px-2.5 py-1 rounded-md border border-white/5">
+            ROM {phone.rom}
           </span>
         </div>
+      </div>
 
-        {/* Relic Image with Ornate Frame */}
-        <div className="relative mb-5 flex items-center justify-center overflow-hidden rounded-[2px] bg-[#1A0F0A]/70 border border-[#5C3D2E]/60 p-4 min-h-[220px]">
-          <div className="absolute inset-0 bg-radial from-[#CA8A04]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <img
-            src={phone.hinhAnh}
-            alt={phone.tenSP}
-            className="h-44 w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-105 drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]"
-          />
-        </div>
-
-        {/* Item Info */}
-        <div className="flex-1">
-          <h3 className="font-cinzel text-xl font-bold tracking-wide text-[#F5E6D3] group-hover:text-[#CA8A04] transition-colors">
-            {phone.tenSP}
-          </h3>
-          <p className="font-spectral text-sm text-[#BFA98A] mt-1 line-clamp-1 italic">
-            {phone.tagline || phone.manHinh}
-          </p>
-
-          {/* Key Specs Pills */}
-          <div className="mt-3 flex flex-wrap gap-2 text-xs font-fira text-[#BFA98A]">
-            <span className="bg-[#1A0F0A] px-2 py-0.5 rounded-[2px] border border-[#5C3D2E]/40">
-              ⚡ {phone.ram}
+      {/* Price & Action CTA */}
+      <div className="mt-6 pt-4 border-t border-white/5">
+        <div className="flex items-baseline justify-between mb-4">
+          <span className="text-xs font-medium text-slate-400">Giá bán chính hãng</span>
+          <div className="text-right">
+            <span className="text-2xl font-extrabold text-amber-400 tracking-tight">
+              {formatPrice(phone.giaBan)}
             </span>
-            <span className="bg-[#1A0F0A] px-2 py-0.5 rounded-[2px] border border-[#5C3D2E]/40">
-              💾 {phone.rom}
-            </span>
+            <span className="text-xs font-medium text-slate-400 ml-1">₫</span>
           </div>
         </div>
 
-        {/* Price & Divider */}
-        <div className="mt-5 pt-4 border-t border-[#5C3D2E]/50">
-          <div className="flex items-baseline justify-between mb-4">
-            <span className="text-xs font-cinzel tracking-wider text-[#BFA98A] uppercase">
-              Tribute
-            </span>
-            <div className="text-right">
-              <span className="font-cinzel text-xl font-bold text-[#CA8A04] quest-glow-sm">
-                {formatPrice(phone.giaBan)}
-              </span>
-              <span className="font-spectral text-xs text-[#BFA98A] ml-1">VNĐ</span>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => onDetailPhone(phone)}
-              className="inline-flex items-center justify-center px-3 py-2 text-xs font-cinzel font-semibold tracking-wider uppercase rounded-[4px] border border-[#CA8A04] text-[#CA8A04] bg-transparent hover:bg-[#CA8A04]/15 transition-all duration-200 cursor-pointer"
-            >
-              Xem Chi Tiết
-            </button>
-            <button
-              onClick={() => onAddToCart && onAddToCart(phone)}
-              className="inline-flex items-center justify-center px-3 py-2 text-xs font-cinzel font-semibold tracking-wider uppercase rounded-[4px] border border-[#DAA520] bg-[#CA8A04] text-[#1A0F0A] hover:bg-[#B8780A] hover:shadow-[0_0_15px_rgba(202,138,4,0.4)] transition-all duration-200 cursor-pointer"
-            >
-              + Thêm Giỏ
-            </button>
-          </div>
+        {/* Action Buttons */}
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            onClick={() => onDetailPhone(phone)}
+            className="w-full py-2.5 px-3 text-xs font-semibold rounded-xl border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10 hover:text-white transition-all cursor-pointer text-center"
+          >
+            Xem thông số
+          </button>
+          <button
+            onClick={() => onAddToCart(phone)}
+            className="w-full py-2.5 px-3 text-xs font-bold rounded-xl bg-amber-500 hover:bg-amber-400 text-black shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-all cursor-pointer text-center"
+          >
+            + Thêm giỏ
+          </button>
         </div>
       </div>
     </div>

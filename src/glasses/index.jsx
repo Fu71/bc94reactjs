@@ -11,69 +11,68 @@ export default function TryGlasses() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1A0F0A] text-[#F5E6D3] py-10 px-4">
+    <div className="min-h-screen bg-[#0F0A07] text-[#F1F5F9] py-12 px-4">
       <div className="container mx-auto max-w-5xl">
         {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-[#CA8A04]/20 border border-[#CA8A04]/30 text-xs font-cinzel text-[#CA8A04] uppercase tracking-wider mb-2">
-            ✦ ARCANE SPECTACLES ✦
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-semibold text-amber-400 mb-3">
+            <span>👓</span>
+            <span>Virtual Try-On Experience</span>
           </div>
-          <h1 className="font-cinzel text-3xl lg:text-4xl font-bold tracking-wider text-[#F5E6D3]">
-            Phòng Thử Kính Thần Thoại Online
+          <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
+            Phòng Thử Kính Trực Tuyến
           </h1>
-          <p className="font-spectral text-[#BFA98A] text-sm mt-2 max-w-xl mx-auto italic">
-            Trải nghiệm thử các mẫu kính ma thuật theo thời gian thực. Hãy bấm chọn từng mẫu kính bên dưới để chiêm ngưỡng hiệu ứng hiển thị.
+          <p className="text-slate-400 text-sm mt-2 max-w-md mx-auto">
+            Trải nghiệm thử mẫu kính thời trang theo thời gian thực trên người mẫu. Bấm chọn từng mẫu kính bên dưới để xem kết quả tức thì.
           </p>
         </div>
 
-        {/* Preview Section */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16 my-8">
-          {/* Left Model: With active glasses and spec card */}
-          <div className="relative w-[300px] rounded-[4px] border border-[#5C3D2E] bg-[#2C1A10] p-3 quest-glow-md">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#CA8A04]" />
-            <div className="relative overflow-hidden rounded-[2px] bg-[#1A0F0A]">
+        {/* Model Preview Section */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 lg:gap-12 my-8">
+          {/* Active Model with Glass Overlay */}
+          <div className="relative w-[320px] rounded-3xl bg-[#1A120D] border border-white/10 p-3.5 shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl bg-black">
               <img
                 src="./glassesImage/model.jpg"
-                alt="model"
-                className="w-full h-[360px] object-cover"
+                alt="Model"
+                className="w-full h-[380px] object-cover"
               />
 
               {/* Glasses Overlay */}
               <img
                 src={selectedGlass.url}
-                alt="glasses"
-                className="absolute left-1/2 top-[92px] w-[175px] -translate-x-1/2 opacity-85 drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)] transition-all duration-300 pointer-events-none"
+                alt="Glasses"
+                className="absolute left-1/2 top-[98px] w-[175px] -translate-x-1/2 opacity-90 drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)] transition-all duration-300 pointer-events-none"
               />
 
               {/* Info Overlay Card */}
-              <div className="absolute bottom-0 left-0 right-0 bg-[#2C1A10]/95 backdrop-blur-md border-t border-[#CA8A04]/60 p-4">
+              <div className="absolute bottom-0 left-0 right-0 bg-[#160E0A]/95 backdrop-blur-md border-t border-white/10 p-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-cinzel text-base font-bold text-[#CA8A04]">
+                  <h3 className="text-base font-bold text-white">
                     {selectedGlass.name}
                   </h3>
-                  <span className="font-fira text-xs font-semibold text-[#22C55E] bg-[#22C55E]/10 border border-[#22C55E]/30 px-1.5 py-0.5 rounded-[2px]">
+                  <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
                     ${selectedGlass.price || 30}
                   </span>
                 </div>
-                <p className="font-spectral text-xs text-[#F5E6D3] mt-1.5 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-slate-300 mt-1 line-clamp-2 leading-relaxed">
                   {selectedGlass.desc}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right Model: Original clean comparison */}
-          <div className="relative w-[300px] rounded-[4px] border border-[#5C3D2E] bg-[#2C1A10] p-3 quest-glow-sm hidden md:block">
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#5C3D2E]" />
-            <div className="relative overflow-hidden rounded-[2px] bg-[#1A0F0A]">
+          {/* Original Clean Model */}
+          <div className="relative w-[320px] rounded-3xl bg-[#1A120D] border border-white/5 p-3.5 shadow-xl hidden md:block opacity-75">
+            <div className="relative overflow-hidden rounded-2xl bg-black">
               <img
                 src="./glassesImage/model.jpg"
-                alt="model original"
-                className="w-full h-[360px] object-cover opacity-80"
+                alt="Model Original"
+                className="w-full h-[380px] object-cover"
               />
               <div className="absolute bottom-3 left-3 right-3 text-center">
-                <span className="font-cinzel text-xs text-[#BFA98A] uppercase tracking-wider bg-[#1A0F0A]/90 px-3 py-1 rounded-[2px] border border-[#5C3D2E]">
-                  Ảnh Mẫu Gốc (Original)
+                <span className="text-xs font-semibold text-slate-300 bg-black/75 px-3 py-1 rounded-full border border-white/10">
+                  Ảnh người mẫu gốc
                 </span>
               </div>
             </div>
@@ -81,15 +80,16 @@ export default function TryGlasses() {
         </div>
 
         {/* Glasses Selection Tray */}
-        <div className="mt-12 rounded-[4px] border border-[#5C3D2E] bg-[#2C1A10] p-6 lg:p-8 quest-glow relative">
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#CA8A04]" />
+        <div className="mt-12 rounded-3xl border border-white/10 bg-[#150E0A] p-6 lg:p-8 shadow-2xl">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-cinzel text-lg font-bold text-[#F5E6D3] flex items-center gap-2">
-              <span>👓</span> Khay Trưng Bày Kính ({glasses.length} Mẫu)
-            </h3>
-            <span className="text-xs font-spectral text-[#BFA98A] italic">
-              Click vào mẫu kính để thử ngay
-            </span>
+            <div>
+              <h3 className="text-lg font-bold text-white">
+                Danh sách mẫu kính ({glasses.length})
+              </h3>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Nhấp vào từng mẫu để áp dụng trực tiếp lên khuôn mặt
+              </p>
+            </div>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">

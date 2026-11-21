@@ -3,10 +3,10 @@ export default function Glasses(props) {
   return (
     <div
       onClick={() => onHandleChangeGlass(glassProps)}
-      className={`h-16 w-28 p-2 rounded-[4px] cursor-pointer transition-all duration-200 flex items-center justify-center ${
+      className={`h-16 w-28 p-2 rounded-xl cursor-pointer transition-all duration-200 flex items-center justify-center ${
         isSelected
-          ? "bg-[#3D2517] border-2 border-[#CA8A04] quest-glow-active"
-          : "bg-[#1A0F0A] border border-[#5C3D2E] hover:border-[#CA8A04]/60 hover:bg-[#3D2517] quest-glow-sm hover:quest-glow"
+          ? "bg-[#251A13] border-2 border-amber-500 shadow-lg shadow-amber-500/20 -translate-y-0.5"
+          : "bg-[#1C140F] border border-white/5 hover:border-amber-500/30 hover:bg-[#221812]"
       }`}
     >
       <img

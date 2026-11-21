@@ -1,82 +1,46 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --color-quest-bg: #1A0F0A;
-    --color-quest-surface: #2C1A10;
-    --color-quest-surface-elevated: #3D2517;
-    --color-quest-border: #5C3D2E;
-    --color-quest-gold: #CA8A04;
-    --color-quest-gold-hover: #B8780A;
-    --color-quest-red: #991B1B;
-    --color-quest-purple: #581C87;
-    --color-quest-parchment: #F5E6D3;
-    --color-quest-muted: #BFA98A;
-    --color-quest-success: #22C55E;
-  }
-
   body {
-    background-color: #1A0F0A;
-    color: #F5E6D3;
-    font-family: 'Spectral', Georgia, serif;
+    background-color: #0F0A07;
+    color: #F1F5F9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     min-height: 100vh;
     background-image: 
-      radial-gradient(ellipse at top, rgba(202, 138, 4, 0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at bottom, rgba(88, 28, 135, 0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245, 158, 11, 0.08), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 90% 60%, rgba(168, 85, 247, 0.04), transparent 60%);
     background-attachment: fixed;
   }
 
-  h1, h2, h3, h4, h5, h6, .font-cinzel {
+  h1, h2, h3, h4, h5, h6 {
+    color: #F8FAFC;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  .font-brand {
     font-family: 'Cinzel', serif;
   }
 
-  .font-spectral {
-    font-family: 'Spectral', Georgia, serif;
-  }
-
-  .font-fira {
-    font-family: 'Fira Code', monospace;
+  .font-body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 }
 
-/* Custom QuestUI Utilities */
-.quest-glow-sm {
-  box-shadow: 0 1px 3px rgba(202, 138, 4, 0.15);
-}
-
-.quest-glow {
-  box-shadow: 0 2px 8px rgba(202, 138, 4, 0.20);
-}
-
-.quest-glow-md {
-  box-shadow: 0 4px 16px rgba(202, 138, 4, 0.25);
-}
-
-.quest-glow-lg {
-  box-shadow: 0 8px 32px rgba(202, 138, 4, 0.30);
-}
-
-.quest-glow-active {
-  box-shadow: 0 0 20px rgba(202, 138, 4, 0.45);
-}
-
-/* Custom Scrollbar for RPG feel */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1A0F0A;
-  border-left: 1px solid #3D2517;
+  background: #0F0A07;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5C3D2E;
-  border-radius: 4px;
-  border: 1px solid #CA8A0440;
+  background: #2D2018;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #CA8A04;
+  background: #D97706;
 }
