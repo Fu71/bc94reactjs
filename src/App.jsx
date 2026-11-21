@@ -1,55 +1,33 @@
-import { useState } from "react";
-import ShoppingPhone from "./shopping-phone";
-import TryGlasses from "./glasses";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import GlassesPage from "./pages/GlassesPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
-function App() {
-  const [activeTab, setActiveTab] = useState("phone");
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-[#0F0A07] text-[#F1F5F9]">
-      {/* Top Portfolio Tab Switcher */}
-      <nav className="border-b border-white/5 bg-[#080503] px-4 py-2 text-xs sticky top-0 z-50">
-        <div className="container mx-auto flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-semibold text-slate-300">
-              TechZone E-Commerce Portfolio
-            </span>
-            <span className="text-slate-600">|</span>
-            <span className="text-slate-400 text-[11px] hidden sm:inline">
-              React 19 & Tailwind CSS
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setActiveTab("phone")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                activeTab === "phone"
-                  ? "bg-amber-500 text-black shadow-sm"
-                  : "text-slate-400 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              📱 Cửa Hàng Điện Thoại
-            </button>
-            <button
-              onClick={() => setActiveTab("glasses")}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                activeTab === "glasses"
-                  ? "bg-amber-500 text-black shadow-sm"
-                  : "text-slate-400 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              👓 Thử Kính Trực Tuyến
-            </button>
-          </div>
+    <BrowserRouter>
+      <CartProvider>
+        <div className="min-h-screen bg-[#0F0A07] text-[#F1F5F9] flex flex-col justify-between selection:bg-amber-500 selection:text-black">
+          <Navbar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/product/:id" element={<ProductDetailPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/glasses" element={<GlassesPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
+          <Footer />
         </div>
-      </nav>
-
-      {/* Main View */}
-      {activeTab === "phone" ? <ShoppingPhone /> : <TryGlasses />}
-    </div>
+      </CartProvider>
+    </BrowserRouter>
   );
 }
-
-export default App;
