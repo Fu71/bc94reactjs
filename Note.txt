@@ -1,3 +1,18 @@
 ==== Buổi 1 ====
-* SPA:
-* Component
+    * SPA:
+    * Component
+
+==== Buổi 2 ====
+    * Rendering element (Data binding)
+    * Handle Event
+    * State: Component re-render lại lần mới khi state có giá trị thay đổi
+    
+    
+==== Buổi 3 ====
+* List Key
+* Làm bài tập buổi 25 - Glasses
+
+==== Buổi 4 ====
+* Communication
+    * Props: Truyền data từ component cha => component con
+    * Lifting state up: Truyền data từ component con => component cha
